@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Hashids\Hashids;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('hashid', fn() => new Hashids('This is my salt!', 6));
     }
 
     /**
